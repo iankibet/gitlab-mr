@@ -1,7 +1,7 @@
 {
-  "name": "gitlab-mr",
+  "name": "@iankibetsh/gitlab-mr",
   "version": "1.0.0",
-  "description": "Nodejs app to helo create gitlab merge requests",
+  "description": "Nodejs app to help create gitlab merge requests",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -1,6 +1,4 @@
-You can rewrite the entire `README.md` file as follows:
 
-```markdown
 # @iankibetsh/gitlab-mr
 
 This is a Node.js application designed to assist in the creation of GitLab merge requests. It uses the `axios` library to make API calls to GitLab.
@@ -43,6 +41,6 @@ A Dockerfile is included in the repository. It uses the `lorisleiva/laravel-dock
 ## License
 
 This project is licensed under the ISC License.
-```
+
 
 Please replace `${CI_PROJECT_ID}`, `${CI_COMMIT_REF_NAME}`, and `${PRIVATE_TOKEN}` with your actual GitLab project ID, commit reference name, and private token respectively.

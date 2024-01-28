@@ -24,7 +24,7 @@ RUN npm --version
 #RUN mkdir -p ~/.npm-global \
 #    && npm config set prefix '~/.npm-global'
 
-RUN npm install -g @iankibetsh/gitlab-mr
+RUN npm install -g @iankibetsh/gitlab-mr@1.0.1
 
 RUN echo 'export PATH="$PATH:/root/.npm-global/bin"' >> ~/.bashrc \
     && source ~/.bashrc

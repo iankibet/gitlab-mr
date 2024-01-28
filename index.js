@@ -3,7 +3,7 @@ const { program } = require('commander');
 const createMr = require('./createMr')
 
 // Define the 'create-mr' command
-program.command('create-mr <projectId> <source> <target>')
+program.command('open <projectId> <source> <target>')
     // Define the options for the 'create-mr' command
     .option('-p, --gitlab-private-token <gitlabPrivateToken>', 'Gitlab private token')
     .option('-t, --title <title>', 'Title of the merge request')

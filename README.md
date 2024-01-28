@@ -1,7 +1,7 @@
 
 # @iankibetsh/gitlab-mr
 
-This is a Node.js application designed to assist in the creation of GitLab merge requests. It uses the `axios` library to make API calls to GitLab.
+This is a Node.js application designed to assist in the management and creation of GitLab merge requests. It uses the `axios` library to make API calls to GitLab.
 
 ## Installation
 
@@ -16,7 +16,7 @@ npm install -g @iankibetsh/gitlab-mr
 You can use the `createMr` function via the command line as follows:
 
 ```bash
-gitlab-mr create-mr ${CI_PROJECT_ID} ${CI_COMMIT_REF_NAME} master --title="${CI_COMMIT_REF_NAME} WIP" -p ${PRIVATE_TOKEN}
+gitlab-mr open ${CI_PROJECT_ID} ${CI_COMMIT_REF_NAME} master --title="${CI_COMMIT_REF_NAME} WIP" -p ${PRIVATE_TOKEN}
 ```
 
 In this command:
@@ -40,7 +40,7 @@ A Dockerfile is included in the repository. It uses the `lorisleiva/laravel-dock
 
 ## License
 
-This project is licensed under the ISC License.
+This project is licensed under the MIT License.
 
 
 Please replace `${CI_PROJECT_ID}`, `${CI_COMMIT_REF_NAME}`, and `${PRIVATE_TOKEN}` with your actual GitLab project ID, commit reference name, and private token respectively.

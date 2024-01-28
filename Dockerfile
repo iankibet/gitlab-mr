@@ -1,30 +1,39 @@
 # Stage 2: PHP with Laravel requirements
-FROM php:latest
+FROM node:20.11-alpine3.18
 
-# Install necessary PHP extensions, composer and mbstring
-RUN apt-get update && apt-get install -y \
-    zip \
-    unzip \
-    libzip-dev \
-    libonig-dev \
+RUN apk add --no-cache \
+    bash \
     curl \
-    && docker-php-ext-install zip pdo_mysql mbstring \
-    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+    freetype-dev \
+    g++ \
+    gcc \
+    gcompat \
+    git \
+    icu-dev \
+    icu-libs \
+    libc-dev \
+    libzip-dev \
+    openssh-client \
+    rsync \
+    zlib-dev
 
-ENV NODE_VERSION=16.13.0
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-ENV NVM_DIR=/root/.nvm
-RUN . "$NVM_DIR/nvm.sh" && nvm install ${NODE_VERSION}
-RUN . "$NVM_DIR/nvm.sh" && nvm use v${NODE_VERSION}
-RUN . "$NVM_DIR/nvm.sh" && nvm alias default v${NODE_VERSION}
-ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin/:${PATH}"
+
 RUN node --version
 RUN npm --version
 
+#RUN mkdir -p ~/.npm-global \
+#    && npm config set prefix '~/.npm-global'
+
 RUN npm install -g @iankibetsh/gitlab-mr
 
-# make nodejs and npm available in the PATH and also node command
+RUN echo 'export PATH="$PATH:/root/.npm-global/bin"' >> ~/.bashrc \
+    && source ~/.bashrc
 
-# Verify installation
+RUN gitlab-mr -h
 
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+WORKDIR /app
+
+CMD ["gitlab-mr", "-h"]
+
+# run an unending process to prevent the container from exiting
+#CMD ["tail", "-f", "/dev/null"]
